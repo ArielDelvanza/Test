@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    <h:head>
+        <title>Jasa Kami</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+    </h:head>
+    <h:body>
+        <div class="container" style="background-image: url(clean5.jpg)">
+            <div class="navbar navbar-inverse"  style="background-color: turquoise">
+                <div class="navbar-brand" style="background-color: turquoise"><font style="color: black">Jasa Kami : #{tblUser.username.toUpperCase()}</font></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-xs-updated">
+                    <center>
+                    <b:container style="width: 40%; background-color: turquoise; color: black">
+                        <h:form styleClass="form-signin" prependId="false">
+                            <br/>
+                            <h:outputLabel  style="font-family: Centaur; font-size: 35px">Registrasi Data Pelanggan</h:outputLabel>
+                            <br></br>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <h:outputLabel style="font-family: Centaur;font-size: 24px">ID Pelanggan</h:outputLabel>
+                                    </td>
+                                    <td width="5%"></td>
+                                    <td>
+                                        <b:inputText style="font-family: Centaur; font-size: 18px; " placeholder="Masukkan ID" value="#{tblPelanggan.idPelanggan}"/>.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Nama</h:outputLabel></td>
+                                    <td></td>
+                                    <td><b:inputText style="font-family: Centaur; font-size: 18px" placeholder="Masukkan Nama" value="#{tblPelanggan.nama}"/></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Alamat</h:outputLabel></td>
+                                    <td></td>
+                                    <td><b:inputText style="font-family: Centaur; font-size: 18px" placeholder="Masukkan Alamat" value="#{tblPelanggan.alamat}"/></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputLabel style="font-family: Centaur; font-size: 24px">E-Mail</h:outputLabel></td>
+                                    <td></td>
+                                    <td><b:inputText style="font-family: Centaur; font-size: 18px" placeholder="Masukkan E-Mail" value="#{tblPelanggan.email}"/></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Telepon</h:outputLabel></td>
+                                    <td></td>
+                                    <td><b:inputText style="font-family: Centaur; font-size: 18px" placeholder="Masukkan No.Telepon" value="#{tblPelanggan.noTelp}"/></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Jasa</h:outputLabel></td>
+                                    <td></td>
+                                    <td><h:selectOneMenu style="font-family: Centaur; font-size: 24px; color: black" value="#{tblPelanggan.jasa}">
+                                            <f:selectItem itemValue="Pilih Jasa" itemLabel="Pilih Jasa"/>
+                                            <f:selectItem itemValue="Jasa Cuci Mobil dan Motor" itemLabel="Jasa Cuci Mobil dan Motor"/>
+                                            <f:selectItem itemValue="Jasa Pijat" itemLabel="Jasa Pijat"/>
+                                            <f:selectItem itemValue="Jasa Cleaning Service" itemLabel="Jasa Cleaning Service"/>
+                                        </h:selectOneMenu></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputLabel style="font-family: Centaur; font-size: 24px">Harga Jasa</h:outputLabel></td>
+                                    <td></td>
+                                    <td><h:selectOneMenu style="font-family: Centaur; font-size: 24px; color: black" value="#{tblPelanggan.harga}">
+                                            <f:selectItem itemValue="Harga Jasa" itemLabel="Harga"/>
+                                            <f:selectItem itemValue="RP. 50.000" itemLabel="RP. 50.000"/>
+                                            <f:selectItem itemValue="RP. 25.000" itemLabel="RP. 25.000"/>
+                                            <f:selectItem itemValue="RP. 95.000" itemLabel="RP. 95.000"/>
+                                        </h:selectOneMenu></td>
+                                </tr>
+                                <table title="Daftar Harga Jasa" border="5" class="table table-responsive">
+                                    <tr>
+                                        <td >Jasa Cuci Mobil dan Motor</td>
+                                        <td>=</td>
+                                        <td>RP. 50.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td >Jasa Pijat</td>
+                                        <td>=</td>
+                                        <td>RP. 25.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td >Jasa Cleaning Service</td>
+                                        <td>=</td>
+                                        <td>RP. 95.000</td>
+                                    </tr>
+                                </table>
+                                <tr>
+                                    <td colspan="3">
+                                        <center>
+                                            <b:commandButton style="margin-top: 20px; margin-bottom: 20px" look="primary btn-success" value="SIMPAN"
+                                                             icon="edit" action="#{tblPelanggan.save()}"/>
+                                            <b:alert style="margin-top: 20px" severity="warning" value="#{tblPelanggan.main_error}" rendered="#{tblPelanggan.item_error}"></b:alert>
+                                            <b:alert style="margin-top: 20px" severity="success" value="#{tblPelanggan.main_msg}" rendered="#{tblPelanggan.item_msg}"></b:alert>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <b:commandButton style="margin-top: 20px; margin-bottom: 20px" look="primary btn-success" value="RESET"
+                                                             icon="trash" action="#{tblPelanggan.reset()}"/>
+                                            <b:commandButton look="btn btn-dark" style="margin-bottom: 20px; margin-left: 20px; color: black" value="BACK" action="view_pelanggan"></b:commandButton>
+                                        </center>
+                                    </td>
+                                </tr>
+                            </table>
+                        </h:form>
+                    </b:container>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+
